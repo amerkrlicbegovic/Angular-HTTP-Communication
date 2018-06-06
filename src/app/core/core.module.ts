@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { LoggerService } from './logger.service';
 import { DataService } from './data.service';
-import { PlainLoggerService } from "./plain-logger.service";
-import { throwIfAlreadyLoaded } from "app/core/module-import-guard";
+import { PlainLoggerService } from './plain-logger.service';
+import { throwIfAlreadyLoaded } from 'app/core/module-import-guard';
 import { BookTrackerErrorHandlerService } from './book-tracker-error-handler.service';
-
+import { BooksResolverService } from 'app/core/books-reslover.service';
 
 @NgModule({
   imports: [
@@ -14,9 +14,10 @@ import { BookTrackerErrorHandlerService } from './book-tracker-error-handler.ser
   ],
   declarations: [],
   providers: [
-    LoggerService, 
-    DataService, 
-    { provide: ErrorHandler, useClass: BookTrackerErrorHandlerService }
+    LoggerService,
+    DataService,
+    { provide: ErrorHandler, useClass: BookTrackerErrorHandlerService },
+    BooksResolverService
   ]
 })
 export class CoreModule {
@@ -24,5 +25,5 @@ export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
     throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
-  
+
  }
