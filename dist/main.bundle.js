@@ -415,10 +415,16 @@ var DataService = (function () {
         return __WEBPACK_IMPORTED_MODULE_2_app_data__["b" /* allReaders */].find(function (reader) { return reader.readerID === id; });
     };
     DataService.prototype.getAllBooks = function () {
-        return __WEBPACK_IMPORTED_MODULE_2_app_data__["a" /* allBooks */];
+        console.log('Getting all books from the server');
+        return this.http.get('/api/books');
     };
     DataService.prototype.getBookById = function (id) {
-        return __WEBPACK_IMPORTED_MODULE_2_app_data__["a" /* allBooks */].find(function (book) { return book.bookID === id; });
+        return this.http.get("/api/books/" + id, {
+            headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({
+                'Accept': 'application/json',
+                'Authorization': 'my-token'
+            })
+        });
     };
     DataService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -512,7 +518,9 @@ var DashboardComponent = (function () {
         this.title = title;
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        this.allBooks = this.dataService.getAllBooks();
+        var _this = this;
+        this.dataService.getAllBooks()
+            .subscribe(function (data) { return _this.allBooks = data; }, function (err) { return console.log(err); }, function () { return console.log('All done getting books.'); });
         this.allReaders = this.dataService.getAllReaders();
         this.mostPopularBook = this.dataService.mostPopularBook;
         this.title.setTitle("Book Tracker " + __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* VERSION */].full);
@@ -595,8 +603,10 @@ var EditBookComponent = (function () {
         this.dataService = dataService;
     }
     EditBookComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var bookID = parseInt(this.route.snapshot.params['id']);
-        this.selectedBook = this.dataService.getBookById(bookID);
+        this.dataService.getBookById(bookID)
+            .subscribe(function (data) { return _this.selectedBook = data; }, function (err) { return console.log(err); });
     };
     EditBookComponent.prototype.setMostPopular = function () {
         this.dataService.setMostPopularBook(this.selectedBook);

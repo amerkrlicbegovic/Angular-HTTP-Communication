@@ -2,8 +2,8 @@ import { Component, OnInit, VERSION } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Title } from '@angular/platform-browser';
 
-import { Book } from "app/models/book";
-import { Reader } from "app/models/reader";
+import { Book } from 'app/models/book';
+import { Reader } from 'app/models/reader';
 import { DataService } from 'app/core/data.service';
 
 @Component({
@@ -19,9 +19,14 @@ export class DashboardComponent implements OnInit {
 
   constructor(private dataService: DataService,
               private title: Title) { }
-  
+
   ngOnInit() {
-    this.allBooks = this.dataService.getAllBooks();
+    this.dataService.getAllBooks()
+      .subscribe(
+        (data: Book[]) => this.allBooks = data,
+        (err: any) => console.log(err),
+        () => console.log('All done getting books.')
+      );
     this.allReaders = this.dataService.getAllReaders();
     this.mostPopularBook = this.dataService.mostPopularBook;
 
