@@ -55,5 +55,25 @@ export class DataService {
       );
   }
 
+  addBook(newBook: Book): Observable<Book> {
+    return this.http.post<Book>('/api/books', newBook, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  updateBook(updateBook: Book): Observable<void> {
+    return this.http.put<void>(`/api/books/${updateBook.bookID}`, updateBook, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  deleteBook(bookID: number): Observable<void> {
+    return this.http.delete<void>(`/api/books/${bookID}`);
+  }
+
 }
 
