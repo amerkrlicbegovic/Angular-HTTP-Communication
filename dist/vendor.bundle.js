@@ -23388,7 +23388,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* Version */
 /* unused harmony export HttpBackend */
 /* unused harmony export HttpHandler */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return HttpClient; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return HttpHeaders; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return HttpHeaders; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HTTP_INTERCEPTORS; });
 /* unused harmony export JsonpClientBackend */
 /* unused harmony export JsonpInterceptor */
@@ -23400,7 +23400,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* Version */
 /* unused harmony export HttpUrlEncodingCodec */
 /* unused harmony export HttpRequest */
 /* unused harmony export HttpErrorResponse */
-/* unused harmony export HttpEventType */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return HttpEventType; });
 /* unused harmony export HttpHeaderResponse */
 /* unused harmony export HttpResponse */
 /* unused harmony export HttpResponseBase */
