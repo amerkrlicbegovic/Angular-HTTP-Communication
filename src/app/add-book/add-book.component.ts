@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Book } from "app/models/book";
+import { Book } from 'app/models/book';
 import { DataService } from 'app/core/data.service';
 
 @Component({
@@ -15,10 +15,10 @@ export class AddBookComponent implements OnInit {
   ngOnInit() { }
 
   saveBook(formValues: any): void {
-    let newBook: Book = <Book>formValues;
+    const newBook: Book = <Book>formValues;
     newBook.bookID = 0;
     console.log(newBook);
-    
+
     this.dataService.addBook(newBook)
       .subscribe(
         (data: Book) => console.log(data),

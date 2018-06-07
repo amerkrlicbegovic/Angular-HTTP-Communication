@@ -16,7 +16,7 @@ export class BadgeService {
     else {
       return 'Getting Started';
     }
-    
+
   }
 
 }

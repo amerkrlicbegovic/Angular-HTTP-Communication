@@ -5,8 +5,8 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 import { allBooks, allReaders } from 'app/data';
-import { Reader } from "app/models/reader";
-import { Book } from "app/models/book";
+import { Reader } from 'app/models/reader';
+import { Book } from 'app/models/book';
 import { BookTrackerError } from 'app/models/bookTrackerError';
 import { OldBook } from 'app/models/oldBook';
 
@@ -40,7 +40,7 @@ export class DataService {
   }
 
   private handleHttpError(error: HttpErrorResponse): Observable<BookTrackerError> {
-    let dataError = new BookTrackerError();
+    const dataError = new BookTrackerError();
     dataError.errorNumber = 100;
     dataError.message = error.statusText;
     dataError.friendlyMessage = 'An error occurred retrieving data.';
@@ -54,7 +54,7 @@ export class DataService {
         'Authorization': 'my-token'
       })
     });
-  }  
+  }
 
   getOldBookById(id: number): Observable<OldBook> {
     return this.http.get<Book>(`/api/books/${id}`)
@@ -86,5 +86,5 @@ export class DataService {
   deleteBook(bookID: number): Observable<void> {
     return this.http.delete<void>(`/api/books/${bookID}`);
   }
-  
+
 }
