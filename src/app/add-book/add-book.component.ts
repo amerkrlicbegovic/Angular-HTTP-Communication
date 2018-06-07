@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Book } from 'app/models/book';
-import { DataService} from 'app/core/data.service';
+import { Book } from "app/models/book";
+import { DataService } from 'app/core/data.service';
 
 @Component({
   selector: 'app-add-book',
@@ -10,7 +10,7 @@ import { DataService} from 'app/core/data.service';
 })
 export class AddBookComponent implements OnInit {
 
-  constructor(private dataServce: DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() { }
 
@@ -18,11 +18,12 @@ export class AddBookComponent implements OnInit {
     let newBook: Book = <Book>formValues;
     newBook.bookID = 0;
     console.log(newBook);
-
-    this.dataServce.addBook(newBook)
+    
+    this.dataService.addBook(newBook)
       .subscribe(
         (data: Book) => console.log(data),
         (err: any) => console.log(err)
-      )
+      );
   }
+
 }

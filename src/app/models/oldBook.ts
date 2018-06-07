@@ -1,4 +1,4 @@
 export class OldBook {
-    bookTitle: string;
-    year: number;
+  bookTitle: string;
+  year: number;
 }

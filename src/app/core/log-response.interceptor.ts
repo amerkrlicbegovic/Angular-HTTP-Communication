@@ -12,7 +12,7 @@ export class LogResponseInterceptor implements HttpInterceptor {
     return next.handle(req)
       .pipe(
         tap(event => {
-          if (event.type === HttpEventType.Response) {
+          if(event.type === HttpEventType.Response) {
             console.log(event.body);
           }
         })
